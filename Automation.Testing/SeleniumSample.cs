@@ -86,5 +86,25 @@ namespace Automation.Testing
             Thread.Sleep(2000);
             driver.Dispose();
         }
+
+        [TestMethod]
+        public void AsSelectSample() 
+        {
+            var driver = new WebDriverFactory(new DriverParams { Driver = "chrome", Binaries = @"C:\Users\User\CSharpProjects\AutomationRoot\Automation.Testing\Resources" }).Get();
+            driver.GoToUrl("https://gravitymvctestapplication.azurewebsites.net/Course");
+            driver.FindElement(By.XPath("//select[@id='SelectedDepartment']")).AsSelect().SelectByValue("4");
+            Thread.Sleep(2000);
+            driver.Dispose();
+        }
+
+        [TestMethod]
+        public void GetElementsSample()
+        {
+            var driver = new WebDriverFactory(new DriverParams { Driver = "chrome", Binaries = @"C:\Users\User\CSharpProjects\AutomationRoot\Automation.Testing\Resources" }).Get();
+            driver.GoToUrl("https://gravitymvctestapplication.azurewebsites.net/");
+            var elements = driver.GetElements(By.XPath("//li[@class='nav-item']"));
+            Thread.Sleep(2000);
+            driver.Dispose();
+        }
     }
 }
