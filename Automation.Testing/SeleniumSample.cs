@@ -106,5 +106,26 @@ namespace Automation.Testing
             Thread.Sleep(2000);
             driver.Dispose();
         }
+
+        [TestMethod]
+        public void GetVisibleElementSample()
+        {
+            var driver = new WebDriverFactory(new DriverParams { Driver = "chrome", Binaries = @"C:\Users\User\CSharpProjects\AutomationRoot\Automation.Testing\Resources" }).Get();
+            driver.GoToUrl("https://gravitymvctestapplication.azurewebsites.net/");
+            // to make element invisible write on HTML page style="display: none;" - test will fail
+            driver.GetVisibleElement(By.XPath("//a[.='Students']")).Click();
+            Thread.Sleep(2000);
+            driver.Dispose();
+        }
+
+        [TestMethod]
+        public void GetVisibleElementsSample()
+        {
+            var driver = new WebDriverFactory(new DriverParams { Driver = "chrome", Binaries = @"C:\Users\User\CSharpProjects\AutomationRoot\Automation.Testing\Resources" }).Get();
+            driver.GoToUrl("https://gravitymvctestapplication.azurewebsites.net/");
+            var elements = driver.GetVisibleElements(By.XPath("//li[@class='nav-item']"));
+            Thread.Sleep(2000);
+            driver.Dispose();
+        }
     }
 }

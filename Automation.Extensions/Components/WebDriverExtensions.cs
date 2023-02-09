@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace Automation.Extensions.Components
@@ -31,6 +32,30 @@ namespace Automation.Extensions.Components
         {
             var wait = new WebDriverWait(driver, timeout);
             return wait.Until(d => d.FindElements(by));
+        }
+
+        public static IWebElement GetVisibleElement(this IWebDriver driver, By by) => GetVisibleElement(driver, by, TimeSpan.FromSeconds(15));
+
+        public static IWebElement GetVisibleElement(this IWebDriver driver, By by, TimeSpan timeout)
+        {
+            var wait = new WebDriverWait(driver, timeout);
+            return wait.Until(d =>
+            {
+                var element = d.FindElement(by);
+                return element.Displayed ? element : null;
+            });
+        }
+
+        public static ReadOnlyCollection<IWebElement> GetVisibleElements(this IWebDriver driver, By by) => GetVisibleElements(driver, by, TimeSpan.FromSeconds(15));
+
+        public static ReadOnlyCollection<IWebElement> GetVisibleElements(this IWebDriver driver, By by, TimeSpan timeout)
+        {
+            var wait = new WebDriverWait(driver, timeout);
+            return wait.Until(d =>
+            {
+                var elements = d.FindElements(by).Where(i => i.Displayed).ToList();
+                return new ReadOnlyCollection<IWebElement>(elements);
+            });
         }
     }
 }
