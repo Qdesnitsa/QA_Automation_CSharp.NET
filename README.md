@@ -1,1 +1,1 @@
-# AutomationRoot
+nuget init Automation.Extensions\bin\Debug C:\Users\User\CSharpProjects\AutomationRoot\nuget-artifactory\packages -Expand
