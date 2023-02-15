@@ -10,8 +10,4 @@
     <PackageReference Include="Selenium.Support" Version="4.8.0" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="nuget init &quot;$(ProjectDir)bin\$(Configuration)&quot; &quot;C:\Users\User\CSharpProjects\AutomationRoot\nuget-artifactory\packages&quot;" />
-  </Target>
-
 </Project>
