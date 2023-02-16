@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Pages\" />
+    <ProjectReference Include="..\Automation.Core\Automation.Core.csproj" />
   </ItemGroup>
 
 </Project>

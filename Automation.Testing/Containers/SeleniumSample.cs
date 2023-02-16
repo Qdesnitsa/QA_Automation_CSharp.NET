@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automation.Testing
+namespace Automation.Testing.Containers
 {
     [TestClass]
     public class SeleniumSample
@@ -89,7 +89,7 @@ namespace Automation.Testing
         }
 
         [TestMethod]
-        public void AsSelectSample() 
+        public void AsSelectSample()
         {
             var driver = new WebDriverFactory(new DriverParams { Driver = "chrome", Binaries = @"C:\Users\User\CSharpProjects\AutomationRoot\Automation.Testing\Resources\web-drivers" }).Get();
             driver.GoToUrl("https://gravitymvctestapplication.azurewebsites.net/Course");
