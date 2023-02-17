@@ -2,6 +2,8 @@
 using Automation.Api.Pages;
 using Automation.Core.Components;
 using Automation.Core.Logging;
+using Automation.Extensions.Components;
+using Automation.Framework.UI.Components;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,9 @@ namespace Automation.Framework.UI.Pages
 
         public IStudents FindByName(string name)
         {
-            throw new NotImplementedException();
+            Driver.GetEnabledElement(By.XPath("//input[@name='SearchString']")).SendKeys(name);
+            Driver.SubmitForm(0);
+            return this;
         }
 
         public T Menu<T>(string menuName)
@@ -56,7 +60,8 @@ namespace Automation.Framework.UI.Pages
 
         public IEnumerable<IStudent> Students()
         {
-            throw new NotImplementedException();
+            var students = Driver.GetElements(By.XPath("//tbody/tr"));
+            return students.Select(i => new StudentUI(Driver, i));
         }
     }
 }

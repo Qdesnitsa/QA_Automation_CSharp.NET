@@ -32,6 +32,7 @@ namespace Automation.Core.Testing
         {
             for (int i = 0; i < attempts; i++)
             {
+                Driver = Get();
                 try
                 {
                     Actual = AutomationTest(testParams);
@@ -54,6 +55,11 @@ namespace Automation.Core.Testing
                 catch(Exception ex)
                 {
                     logger.Debug(ex, ex.Message);
+                }
+                finally
+                {
+                    Driver?.Close();
+                    Driver?.Dispose();
                 }
             }         
             return this;
