@@ -5,11 +5,6 @@ using Automation.Core.Logging;
 using Automation.Extensions.Components;
 using Automation.Framework.UI.Components;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Automation.Framework.UI.Pages
 {
@@ -23,7 +18,7 @@ namespace Automation.Framework.UI.Pages
 
         public ICreateStudent Create()
         {
-            Driver.GetEnabledElement(By.XPath("//a[contains(@href, '/Student/Create')]"));
+            Driver.GetEnabledElement(By.XPath("//a[contains(@href, '/Student/Create')]")).Click();
             return new CreateStudentUI(Driver);
         }
 
