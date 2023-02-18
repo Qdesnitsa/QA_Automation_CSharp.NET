@@ -16,7 +16,7 @@ namespace Automation.Testing.Containers
         [DataRow("{'driver':'chrome','keyword':'Alexander','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
         public void SearchStudentUITest(string testParams)
         {
-            //generate test-paameters
+            //generate test-parameters
             var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);
 
             // execute with parameters
@@ -35,6 +35,20 @@ namespace Automation.Testing.Containers
 
             // execute with parameters
             var actual = new CreateStudent().WithTestParams(parameters).Execute().Actual;
+
+            // assert results
+            Assert.IsTrue(actual);
+        }
+
+        [DataTestMethod]
+        [DataRow("{'driver':'chrome','firstName':'Alexander','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
+        public void StudentDetailsTest(string testParams)
+        {
+            //generate test-parameters
+            var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);
+
+            // execute with parameters
+            var actual = new StudentDetails().WithTestParams(parameters).Execute().Actual;
 
             // assert results
             Assert.IsTrue(actual);

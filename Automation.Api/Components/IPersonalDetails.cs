@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Automation.Api.Components
 {
-    public interface IStudentDetails
+    public interface IPersonalDetails
     {
         string FirstName();
         string LastName();

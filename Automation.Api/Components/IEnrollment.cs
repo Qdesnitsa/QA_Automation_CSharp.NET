@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Automation.Api.Components
 {
-    public interface IEntityActions
+    public interface IEnrollment
     {
-        object Edit();
-        object Details();
-        object Delete();
+        string CourseTitle();
+        string Grade();
     }
 }

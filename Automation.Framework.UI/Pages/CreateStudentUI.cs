@@ -1,7 +1,9 @@
 ﻿using Automation.Api.Pages;
 using Automation.Core.Components;
 using Automation.Core.Logging;
+using Automation.Extensions.Components;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,8 @@ namespace Automation.Framework.UI.Pages
 
         public IStudents Create()
         {
-            throw new NotImplementedException();
+            Driver.GetEnabledElement(By.XPath("//input[contains(@class, 'btn-primary')]"));
+            return new StudentsUI(Driver);
         }
 
         public DateTime EnrollementDate()
@@ -35,7 +38,9 @@ namespace Automation.Framework.UI.Pages
 
         public ICreateStudent EnrollementDate(DateTime enrollementDate)
         {
-            throw new NotImplementedException();
+            var script = $"document.getElementById('EnrollmentDate').setAttribute('value','{enrollementDate.ToString("yyyy-MM-dd")}');";
+            Driver.ExecuteJavaScript(script);
+            return this;
         }
 
         public string FirstName()
@@ -45,7 +50,8 @@ namespace Automation.Framework.UI.Pages
 
         public ICreateStudent FirstName(string firstName)
         {
-            throw new NotImplementedException();
+            Driver.GetEnabledElement(By.XPath("//input[@name='FirstMidName']")).SendKeys(firstName);
+            return this;
         }
 
         public string LastName()
@@ -55,7 +61,8 @@ namespace Automation.Framework.UI.Pages
 
         public ICreateStudent LastName(string lastName)
         {
-            throw new NotImplementedException();
+            Driver.GetEnabledElement(By.XPath("//input[@name='LastName']")).SendKeys(lastName);
+            return this;
         }
     }
 }

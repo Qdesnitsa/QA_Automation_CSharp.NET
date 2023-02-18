@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Automation.Api.Pages
 {
-    public interface ICreateStudent : IStudentDetails, ICreate<IStudents>, IBack<IStudents>
+    public interface ICreateStudent : IPersonalDetails, ICreate<IStudents>, IBack<IStudents>
     {
         ICreateStudent EnrollementDate(DateTime enrollementDate);
 

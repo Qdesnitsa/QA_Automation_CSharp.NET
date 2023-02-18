@@ -23,7 +23,8 @@ namespace Automation.Framework.UI.Pages
 
         public ICreateStudent Create()
         {
-            throw new NotImplementedException();
+            Driver.GetEnabledElement(By.XPath("//a[contains(@href, '/Student/Create')]"));
+            return new CreateStudentUI(Driver);
         }
 
         public IStudents FindByName(string name)

@@ -1,6 +1,8 @@
 ﻿using Automation.Api.Components;
+using Automation.Api.Pages;
 using Automation.Core.Components;
 using Automation.Core.Logging;
+using Automation.Framework.UI.Pages;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -32,9 +34,10 @@ namespace Automation.Framework.UI.Components
             throw new NotImplementedException();
         }
 
-        public object Details()
+        public IStudentDetails Details()
         {
-            throw new NotImplementedException();
+            dataRow.FindElement(By.XPath("//a[contains(@href, '/Student/Details/')]")).Click();
+            return new StudentDetailsUI(Driver);
         }
 
         public object Edit()
