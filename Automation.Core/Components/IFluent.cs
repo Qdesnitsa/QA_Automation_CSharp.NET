@@ -1,6 +1,6 @@
 ﻿using Automation.Core.Logging;
 
-namespace Automation.Core
+namespace Automation.Core.Components
 {
     public interface IFluent
     {

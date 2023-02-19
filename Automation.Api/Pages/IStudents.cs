@@ -1,5 +1,5 @@
 ﻿using Automation.Api.Components;
-using Automation.Core;
+using Automation.Core.Components;
 
 namespace Automation.Api.Pages
 {

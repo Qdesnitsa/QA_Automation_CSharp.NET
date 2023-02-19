@@ -94,9 +94,9 @@ namespace Automation.Core.Testing
             var driverParams = new DriverParams { Binaries = ".", Driver = "chrome" };
 
             // change driver if exists
-            if (testParams?.ContainsKey("driver") == true)
+            if (testParams?.ContainsKey(DRIVER) == true)
             {
-                driverParams.Driver = $"{testParams["driver"]}";
+                driverParams.Driver = $"{testParams[DRIVER]}";
             }
 
             // create driver
