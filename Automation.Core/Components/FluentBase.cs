@@ -1,4 +1,5 @@
 ﻿using Automation.Core.Logging;
+using System.Reflection;
 
 namespace Automation.Core.Components
 {
@@ -12,20 +13,34 @@ namespace Automation.Core.Components
 
         public T ChangeContext<T>()
         {
-            var instance = Create<T>(null);
+            var instance = Create<T>(null, null);
             Logger.Debug($"Instance of [{GetType()?.FullName}] created");
             return instance;
         }
 
         public T ChangeContext<T>(ILogger logger)
         {
-            return Create<T>(logger);
+            return Create<T>(null, logger);
         }
 
         public abstract T ChangeContext<T>(string application);
 
         public abstract T ChangeContext<T>(string application, ILogger logger);
 
-        internal abstract T Create<T>(ILogger logger);
+        public abstract T ChangeContext<T>(string type, string aplication);
+
+        internal abstract T Create<T>(Type type, ILogger logger);
+
+        internal Type GetTypeByName(string type)
+        {
+            var assemblies = new List<Assembly>();
+            foreach (var assembly in Assembly.GetCallingAssembly().GetReferencedAssemblies())
+            {
+                assemblies.Add(Assembly.Load(assembly));
+            }
+            return assemblies
+                .SelectMany(i => i.GetTypes())
+                .FirstOrDefault(i => i.FullName.Equals(type, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

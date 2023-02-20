@@ -25,6 +25,7 @@
 		<ProjectReference Include="..\Automation.Api\Automation.Api.csproj" />
 		<ProjectReference Include="..\Automation.Core\Automation.Core.csproj" />
 		<ProjectReference Include="..\Automation.Extensions\Automation.Extensions.csproj" />
+		<ProjectReference Include="..\Automation.Framework.RestApi\Automation.Framework.RestApi.csproj" />
 		<ProjectReference Include="..\Automation.Framework.UI\Automation.Framework.UI.csproj" />
 	</ItemGroup>
 
