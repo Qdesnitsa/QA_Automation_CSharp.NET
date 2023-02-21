@@ -26,7 +26,7 @@ namespace Automation.Framework.UI.Pages
             return new StudentsUI(Driver);
         }
 
-        public DateTime EnrollementDate()
+        public DateTime EnrollmentDate()
         {
             throw new NotImplementedException();
         }

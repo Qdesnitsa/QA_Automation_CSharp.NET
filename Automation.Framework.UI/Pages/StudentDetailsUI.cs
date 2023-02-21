@@ -17,7 +17,7 @@ namespace Automation.Framework.UI.Pages
         {
         }
 
-        public DateTime EnrollementDate()
+        public DateTime EnrollmentDate()
         {
             throw new NotImplementedException();
         }

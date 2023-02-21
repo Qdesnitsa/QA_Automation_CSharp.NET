@@ -1,4 +1,5 @@
-﻿using Automation.Framework.RestApi.Pages;
+﻿using Automation.Core.Components;
+using Automation.Framework.RestApi.Pages;
 using Automation.Testing.Cases;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -9,8 +10,23 @@ namespace Automation.Testing.Containers
     public class StudentTests
     {
         [DataTestMethod]
-        [DataRow("{'driver':'chrome','keyword':'Alexander','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
-        public void SearchStudentUITest(string testParams)
+        [DataRow("" +
+                 "{" +
+                 "'driver':'chrome'," +
+                 "'keyword':'Alexander'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
+                 "'fluent':'Automation.Core.Components.FluentUI'," +
+                 "'students':'Automation.Framework.UI.Pages.StudentsUI'}"
+                 )]
+        [DataRow("" +
+                 "{" +
+                 "'driver':'HTTP'," +
+                 "'keyword':'Alexander'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net'," +
+                 "'fluent':'Automation.Core.Components.FluentRest'," +
+                 "'students':'Automation.Framework.RestApi.Pages.StudentsRest'}"
+        )]
+        public void SearchStudentTest(string testParams)
         {
             //generate test-parameters
             var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);
@@ -21,23 +37,24 @@ namespace Automation.Testing.Containers
             // assert results
             Assert.IsTrue(actual);
         }
-
+        
         [DataTestMethod]
-        [DataRow("{'driver':'chrome','firstName':'csharp','lastName':'student','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
-        public void CreateStudentUITest(string testParams)
-        {
-            //generate test-paameters
-            var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);
-
-            // execute with parameters
-            var actual = new CreateStudent().WithTestParams(parameters).Execute().Actual;
-
-            // assert results
-            Assert.IsTrue(actual);
-        }
-
-        [DataTestMethod]
-        [DataRow("{'driver':'chrome','firstName':'Alexander','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
+        [DataRow("" +
+                 "{" +
+                 "'driver':'chrome'," +
+                 "'keyword':'Alexander'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
+                 "'fluent':'Automation.Core.Components.FluentUI'," +
+                 "'students':'Automation.Framework.UI.Pages.StudentsUI'}"
+        )]
+        [DataRow("" +
+                 "{" +
+                 "'driver':'HTTP'," +
+                 "'keyword':'Alexander'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net'," +
+                 "'fluent':'Automation.Core.Components.FluentRest'," +
+                 "'students':'Automation.Framework.RestApi.Pages.StudentsRest'}"
+        )]
         public void StudentDetailsTest(string testParams)
         {
             //generate test-parameters
@@ -50,10 +67,18 @@ namespace Automation.Testing.Containers
             Assert.IsTrue(actual);
         }
 
-        [TestMethod]
-        public void TemptTest()
+        [DataTestMethod]
+        [DataRow("{'driver':'chrome','firstName':'csharp','lastName':'student','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
+        public void CreateStudentUiTest(string testParams)
         {
-            var students = new StudentsRest(new HttpClient());
+            //generate test-paameters
+            var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);
+
+            // execute with parameters
+            var actual = new CreateStudent().WithTestParams(parameters).Execute().Actual;
+
+            // assert results
+            Assert.IsTrue(actual);
         }
     }
 }

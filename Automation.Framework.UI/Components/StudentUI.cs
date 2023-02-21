@@ -41,7 +41,7 @@ namespace Automation.Framework.UI.Components
         }
 
         // data
-        public DateTime EnrollementDate()
+        public DateTime EnrollmentDate()
         {
             return enrollementDate;
         }

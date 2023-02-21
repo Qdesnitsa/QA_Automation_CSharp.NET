@@ -2,12 +2,12 @@
 
 namespace Automation.Core.Components
 {
-    public class FluentRestApi : FluentBase
+    public class FluentRest : FluentBase
     {
-        public FluentRestApi(HttpClient httpClient)
+        public FluentRest(HttpClient httpClient)
             : this(httpClient, new TraceLogger()) { }
 
-        public FluentRestApi(HttpClient httpClient, ILogger logger) : base(logger)
+        public FluentRest(HttpClient httpClient, ILogger logger) : base(logger)
         {
             HttpClient = httpClient ?? new HttpClient();
         }
@@ -28,7 +28,7 @@ namespace Automation.Core.Components
 
         public override T ChangeContext<T>(string type, string application)
         {
-            var t = GetTypeByName(type);
+            var t = Utilities.GetTypeByName(type);
             HttpClient.BaseAddress = new Uri(application);
             return Create<T>(t, null);
         }
