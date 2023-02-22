@@ -31,9 +31,9 @@ namespace Automation.Framework.UI.Pages
             throw new NotImplementedException();
         }
 
-        public ICreateStudent EnrollementDate(DateTime enrollementDate)
+        public ICreateStudent EnrollmentDate(DateTime enrollmentDate)
         {
-            var script = $"document.getElementById('EnrollmentDate').setAttribute('value','{enrollementDate.ToString("yyyy-MM-dd")}');";
+            var script = $"document.getElementById('EnrollmentDate').setAttribute('value','{enrollmentDate.ToString("yyyy-MM-dd")}');";
             Driver.ExecuteJavaScript(script);
             return this;
         }

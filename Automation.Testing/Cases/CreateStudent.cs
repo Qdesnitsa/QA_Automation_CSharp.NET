@@ -1,4 +1,5 @@
-﻿using Automation.Core.Components;
+﻿using Automation.Api.Pages;
+using Automation.Core.Components;
 using Automation.Core.Testing;
 using Automation.Framework.UI.Pages;
 
@@ -12,14 +13,16 @@ namespace Automation.Testing.Cases
             // students to find
             var firstName = $"{testParams["firstName"]}";
             var lastName = $"{testParams["lastName"]}";
+            var fluent = $"{testParams["fluent"]}";
+            var students = $"{testParams["students"]}";
 
             // perform test case
-            return new FluentUI(Driver)
-                .ChangeContext<StudentsUI>($"{testParams["application"]}")
+            return CreateFluentApi(fluent)
+                .ChangeContext<IStudents>(students, $"{testParams["application"]}")
                 .Create()
                 .FirstName(firstName)
                 .LastName(lastName)
-                .EnrollementDate(DateTime.Now)
+                .EnrollmentDate(DateTime.Now)
                 .Create()
                 .FindByName(firstName)
                 .Students()

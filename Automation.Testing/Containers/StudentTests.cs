@@ -45,7 +45,8 @@ namespace Automation.Testing.Containers
                  "'keyword':'Alexander'," +
                  "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
                  "'fluent':'Automation.Core.Components.FluentUI'," +
-                 "'students':'Automation.Framework.UI.Pages.StudentsUI'}"
+                 "'students':'Automation.Framework.UI.Pages.StudentsUI'" +
+                 "}"
         )]
         [DataRow("" +
                  "{" +
@@ -53,7 +54,8 @@ namespace Automation.Testing.Containers
                  "'keyword':'Alexander'," +
                  "'application':'https://gravitymvctestapplication.azurewebsites.net'," +
                  "'fluent':'Automation.Core.Components.FluentRest'," +
-                 "'students':'Automation.Framework.RestApi.Pages.StudentsRest'}"
+                 "'students':'Automation.Framework.RestApi.Pages.StudentsRest'" +
+                 "}"
         )]
         public void StudentDetailsTest(string testParams)
         {
@@ -68,7 +70,24 @@ namespace Automation.Testing.Containers
         }
 
         [DataTestMethod]
-        [DataRow("{'driver':'chrome','firstName':'csharp','lastName':'student','application':'https://gravitymvctestapplication.azurewebsites.net/Student'}")]
+        // [DataRow("" +
+        //          "{" +
+        //          "'driver':'chrome'," +
+        //          "'firstName':'csharp'," +
+        //          "'lastName':'student'," +
+        //          "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
+        //          "'fluent':'Automation.Core.Components.FluentUI'," +
+        //          "'students':'Automation.Framework.UI.Pages.StudentsUI'" +
+        //          "}")]
+        [DataRow("" +
+                 "{" +
+                 "'driver':'HTTP'," +
+                 "'firstName':'csharp'," +
+                 "'lastName':'student'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
+                 "'fluent':'Automation.Core.Components.FluentRest'," +
+                 "'students':'Automation.Framework.RestApi.Pages.StudentsRest'" +
+                 "}")]
         public void CreateStudentUiTest(string testParams)
         {
             //generate test-paameters
