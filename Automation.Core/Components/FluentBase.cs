@@ -1,5 +1,4 @@
 ﻿using Automation.Core.Logging;
-using System.Reflection;
 
 namespace Automation.Core.Components
 {
@@ -27,7 +26,7 @@ namespace Automation.Core.Components
 
         public abstract T ChangeContext<T>(string application, ILogger logger);
 
-        public abstract T ChangeContext<T>(string type, string aplication);
+        public abstract T ChangeContext<T>(string type, string application);
 
         internal abstract T Create<T>(Type type, ILogger logger);
     }

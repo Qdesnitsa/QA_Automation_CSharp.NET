@@ -1,6 +1,4 @@
-﻿using Automation.Core.Components;
-using Automation.Framework.RestApi.Pages;
-using Automation.Testing.Cases;
+﻿using Automation.Testing.Cases;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -70,25 +68,25 @@ namespace Automation.Testing.Containers
         }
 
         [DataTestMethod]
-        // [DataRow("" +
-        //          "{" +
-        //          "'driver':'chrome'," +
-        //          "'firstName':'csharp'," +
-        //          "'lastName':'student'," +
-        //          "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
-        //          "'fluent':'Automation.Core.Components.FluentUI'," +
-        //          "'students':'Automation.Framework.UI.Pages.StudentsUI'" +
-        //          "}")]
+        [DataRow("" +
+                 "{" +
+                 "'driver':'chrome'," +
+                 "'firstName':'csharp ui'," +
+                 "'lastName':'student'," +
+                 "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
+                 "'fluent':'Automation.Core.Components.FluentUI'," +
+                 "'students':'Automation.Framework.UI.Pages.StudentsUI'" +
+                 "}")]
         [DataRow("" +
                  "{" +
                  "'driver':'HTTP'," +
-                 "'firstName':'csharp'," +
+                 "'firstName':'csharp api'," +
                  "'lastName':'student'," +
                  "'application':'https://gravitymvctestapplication.azurewebsites.net/Student'," +
                  "'fluent':'Automation.Core.Components.FluentRest'," +
                  "'students':'Automation.Framework.RestApi.Pages.StudentsRest'" +
                  "}")]
-        public void CreateStudentUiTest(string testParams)
+        public void CreateStudentTest(string testParams)
         {
             //generate test-paameters
             var parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(testParams);

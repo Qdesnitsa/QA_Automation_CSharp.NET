@@ -8,6 +8,6 @@ namespace Automation.Core.Components
         T ChangeContext<T>(ILogger logger);
         T ChangeContext<T>(string application);
         T ChangeContext<T>(string application, ILogger logger);
-        T ChangeContext<T>(string type, string aplication);
+        T ChangeContext<T>(string type, string application);
     }
 }

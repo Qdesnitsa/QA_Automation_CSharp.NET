@@ -1,7 +1,5 @@
 ﻿using Automation.Api.Pages;
-using Automation.Core.Components;
 using Automation.Core.Testing;
-using Automation.Framework.UI.Pages;
 
 namespace Automation.Testing.Cases
 {

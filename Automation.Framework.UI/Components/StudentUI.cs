@@ -12,7 +12,7 @@ namespace Automation.Framework.UI.Components
         private readonly IWebElement dataRow;
         private string firstName;
         private string lastName;
-        private DateTime enrollementDate;
+        private DateTime enrollmentDate;
         public StudentUI(IWebDriver driver, IWebElement dataRow) 
             : this(driver, new TraceLogger()) 
         {
@@ -43,7 +43,7 @@ namespace Automation.Framework.UI.Components
         // data
         public DateTime EnrollmentDate()
         {
-            return enrollementDate;
+            return enrollmentDate;
         }
 
         public string FirstName()
@@ -64,7 +64,7 @@ namespace Automation.Framework.UI.Components
 
             // parse date
             var dateString = dataRow.FindElement(By.XPath("./td[contains(@id, 'student_enroll_date')]")).Text.Trim();
-            DateTime.TryParse(dateString, out enrollementDate);
+            DateTime.TryParse(dateString, out enrollmentDate);
         }
     }
 }

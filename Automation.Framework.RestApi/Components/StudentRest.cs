@@ -13,7 +13,7 @@ namespace Automation.Framework.RestApi.Components
         private int id;
         private string firstName;
         private string lastName;
-        private DateTime enrollementDate;
+        private DateTime enrollmentDate;
 
         public StudentRest(HttpClient httpClient, JToken dataRow) 
             : this(httpClient, new TraceLogger())
@@ -23,9 +23,7 @@ namespace Automation.Framework.RestApi.Components
         }
 
         public StudentRest(HttpClient httpClient, ILogger logger) 
-            : base(httpClient, logger)
-        {
-        }
+            : base(httpClient, logger) { }
 
         public object Delete()
         {
@@ -44,7 +42,7 @@ namespace Automation.Framework.RestApi.Components
 
         public DateTime EnrollmentDate()
         {
-            return enrollementDate;
+            return enrollmentDate;
         }
 
         public string FirstName()
@@ -62,7 +60,7 @@ namespace Automation.Framework.RestApi.Components
         {
             firstName = $"{dataRow["firstMidName"]}";
             lastName = $"{dataRow["lastName"]}";
-            enrollementDate = DateTime.Parse($"{dataRow["enrollmentDate"]}");
+            enrollmentDate = DateTime.Parse($"{dataRow["enrollmentDate"]}");
             int.TryParse($"{dataRow["id"]}", out id);
         }
     }

@@ -2,7 +2,6 @@
 using Automation.Extensions.Components;
 using Automation.Extensions.Contracts;
 using OpenQA.Selenium;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Automation.Core.Components
 {
@@ -51,10 +50,7 @@ namespace Automation.Core.Components
 
         internal override T Create<T>(Type type, ILogger logger)
         {
-            if(type == null)
-            {
-                type = typeof(T);
-            }
+            type ??= typeof(T);
             return logger == null
                 ? (T)Activator.CreateInstance(type, new object[] { Driver })
                 : (T)Activator.CreateInstance(type, new object[] { Driver, logger });
